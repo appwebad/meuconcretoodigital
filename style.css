@@ -450,10 +450,12 @@ footer p {
     height: 215px;
   }
 
-  .chatbot-float {
-    font-size: 13px;
-    padding: 12px 14px;
-  }
+ .chatbot-float {
+  font-size: 13px;
+  padding: 12px 14px;
+}
+
+} /* ← FECHA O MEDIA QUERY */
 
 .ebook-box {
   max-width: 520px;
