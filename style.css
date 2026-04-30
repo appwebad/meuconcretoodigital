@@ -9,7 +9,13 @@ html {
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #060606;
+  background: linear-gradient(
+    to bottom,
+    #050505 0%,
+    #050505 40%,
+    #f5f7fa 40%,
+    #f5f7fa 100%
+  );
   color: #ffffff;
 }
 
@@ -61,25 +67,27 @@ a {
 }
 
 .hero {
-  background: linear-gradient(135deg, #050505, #4b070d);
+  background: #000;
 }
 
 .hero-banner {
   width: 100%;
   display: block;
-  height: auto; /* evita corte */
-  object-fit: contain; /* mostra imagem completa */
-  background: #000; /* fundo caso sobre espaço */
+  height: auto;
+  object-fit: contain;
+  background: #000;
 }
 
 .intro {
   padding: 55px 0 35px;
   text-align: center;
+  background: #f5f7fa;
+  color: #1f2937;
 }
 
 .tag {
   display: inline-block;
-  background: rgba(126, 12, 16, 0.9);
+  background: rgba(126, 12, 16, 0.95);
   border: 1px solid rgba(212, 162, 74, 0.5);
   color: #f7d18b;
   padding: 8px 14px;
@@ -101,13 +109,14 @@ h2 {
 }
 
 p {
-  color: rgba(255,255,255,.78);
+  color: #4b5563;
   line-height: 1.65;
 }
 
 .intro p {
   max-width: 850px;
   margin: 0 auto;
+  color: #4b5563;
 }
 
 .actions {
@@ -140,6 +149,12 @@ p {
 
 .section {
   padding: 55px 0;
+  background: #f5f7fa;
+  color: #1f2937;
+}
+
+.section p {
+  color: #4b5563;
 }
 
 .section-head {
@@ -157,11 +172,12 @@ p {
 .box,
 .opinion-form,
 .contact {
-  background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(126,12,16,.18));
-  border: 1px solid rgba(212, 162, 74, 0.24);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #1f2937;
   border-radius: 24px;
   padding: 24px;
-  box-shadow: 0 18px 45px rgba(0,0,0,.28);
+  box-shadow: 0 18px 45px rgba(0,0,0,.10);
 }
 
 .card h3 {
@@ -169,7 +185,7 @@ p {
 }
 
 .card a {
-  color: #f3c970;
+  color: #8a0f14;
   font-weight: 800;
 }
 
@@ -187,6 +203,7 @@ p {
   border-radius: 24px;
   overflow: hidden;
   border: 1px solid rgba(212, 162, 74, 0.25);
+  background: #000;
 }
 
 .video-wrap iframe {
@@ -213,11 +230,16 @@ textarea {
   width: 100%;
   padding: 15px;
   border-radius: 16px;
-  border: 1px solid rgba(212,162,74,.35);
-  background: rgba(0,0,0,.45);
-  color: #fff;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #1f2937;
   outline: none;
   font-size: 15px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280;
 }
 
 textarea {
@@ -232,14 +254,16 @@ textarea {
 }
 
 .opinion-card {
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(212,162,74,.2);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #1f2937;
   border-radius: 18px;
   padding: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
 }
 
 .opinion-card strong {
-  color: #f3c970;
+  color: #8a0f14;
 }
 
 .contact {
@@ -254,11 +278,13 @@ textarea {
 }
 
 .contact-grid a {
-  background: rgba(0,0,0,.35);
-  border: 1px solid rgba(212,162,74,.2);
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #1f2937;
   border-radius: 16px;
   padding: 16px;
   text-decoration: none;
+  font-weight: 700;
 }
 
 .chatbot-float,
@@ -296,9 +322,18 @@ footer {
   padding: 28px;
   border-top: 1px solid rgba(212,162,74,.18);
   background: #030303;
+  color: #ffffff;
+}
+
+footer p {
+  color: rgba(255,255,255,.78);
 }
 
 @media (max-width: 860px) {
+  .container {
+    width: min(1120px, 92%);
+  }
+
   .topbar-inner {
     flex-direction: column;
     padding: 16px 0;
@@ -316,9 +351,11 @@ footer {
   }
 
   .hero-banner {
-    min-height: 380px;
-    object-fit: cover;
-    object-position: center;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center top;
+    background: #000;
   }
 }
 
@@ -333,6 +370,10 @@ footer {
 
   .section {
     padding: 38px 0;
+  }
+
+  .intro {
+    padding: 38px 0 28px;
   }
 
   .chatbot-float {
