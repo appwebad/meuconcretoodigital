@@ -67,8 +67,9 @@ a {
 .hero-banner {
   width: 100%;
   display: block;
-  max-height: 760px;
-  object-fit: cover;
+  height: auto; /* evita corte */
+  object-fit: contain; /* mostra imagem completa */
+  background: #000; /* fundo caso sobre espaço */
 }
 
 .intro {
