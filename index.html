@@ -133,17 +133,20 @@
     <p>Compartilhe dúvidas, sugestões ou comentários sobre os conteúdos.</p>
   </div>
 
-  <form id="opinionForm" class="opinion-form">
-    <div class="form-grid">
-      <input type="text" id="nome" placeholder="Seu nome" required>
-      <select id="tema" required>
-        <option value="">Escolha o tema</option>
-        <option>Consórcio</option>
-        <option>Planejamento financeiro</option>
-        <option>Imóvel</option>
-        <option>Veículo</option>
-        <option>eBook digital</option>
-      </select>
+      <form id="opinionForm" class="opinion-form">
+  <div class="form-grid">
+    <input type="text" id="nome" placeholder="Seu nome" required>
+    <input type="email" id="email" placeholder="Seu e-mail (opcional)">
+    
+    <select id="tema" required>
+      <option value="">Escolha o tema</option>
+      <option>Consórcio</option>
+      <option>Planejamento financeiro</option>
+      <option>Imóvel</option>
+      <option>Veículo</option>
+      <option>eBook digital</option>
+    </select>
+      
     </div>
     <textarea id="opiniao" placeholder="Digite sua opinião ou dúvida..." required></textarea>
     <button type="submit" class="btn primary">Publicar opinião</button>
