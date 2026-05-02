@@ -60,10 +60,24 @@ form.addEventListener("submit", async function (event) {
       body: JSON.stringify(novaOpiniao)
     });
 
-    alert("Opinião publicada e enviada para a planilha!");
+   const msg = document.createElement("div");
+msg.innerText = "Dados enviados com sucesso!";
+msg.style.background = "#16a34a";
+msg.style.color = "#fff";
+msg.style.padding = "12px";
+msg.style.borderRadius = "10px";
+msg.style.marginTop = "10px";
+msg.style.textAlign = "center";
+
+form.appendChild(msg);
+
+setTimeout(() => {
+  msg.remove();
+}, 3000);
 
   } catch (error) {
-    alert("Opinião publicada no site, mas não foi enviada para a planilha.");
+   
+    alert("Dados recebidos no site, mas houve uma falha no envio. Tente novamente.");
   }
 });
 
