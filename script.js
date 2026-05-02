@@ -3,6 +3,7 @@ const list = document.getElementById("opinionsList");
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw7V-1NF6LjL03Iys9hpyssOfBpVprt27tgU0r3475P4oU21aeMM_408jaNwT7lsi8YZg/exec";
 const savedOpinions = JSON.parse(localStorage.getItem("opinionsMeuConcretoo")) || [];
+
 const email = document.getElementById("email").value || "";
 
 
@@ -62,24 +63,23 @@ form.addEventListener("submit", async function (event) {
       body: JSON.stringify(novaOpiniao)
     });
 
-   const msg = document.createElement("div");
-msg.innerText = "Dados enviados com sucesso!";
-msg.style.background = "#16a34a";
-msg.style.color = "#fff";
-msg.style.padding = "12px";
-msg.style.borderRadius = "10px";
-msg.style.marginTop = "10px";
-msg.style.textAlign = "center";
+    savedOpinions.push(novaOpiniao);
+    localStorage.setItem("opinionsMeuConcretoo", JSON.stringify(savedOpinions));
 
-form.appendChild(msg);
+    renderOpinions();
+    form.reset();
 
-setTimeout(() => {
-  msg.remove();
-}, 3000);
+    messageBox.innerText = "Dados enviados com sucesso!";
+    messageBox.className = "form-message success";
+
+    setTimeout(() => {
+      messageBox.innerText = "";
+      messageBox.className = "form-message";
+    }, 3000);
 
   } catch (error) {
-   
-    alert("Dados recebidos no site, mas houve uma falha no envio. Tente novamente.");
+    messageBox.innerText = "Erro ao enviar. Tente novamente.";
+    messageBox.className = "form-message error";
   }
 });
 
