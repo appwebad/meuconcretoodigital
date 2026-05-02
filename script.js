@@ -3,6 +3,7 @@ const list = document.getElementById("opinionsList");
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw7V-1NF6LjL03Iys9hpyssOfBpVprt27tgU0r3475P4oU21aeMM_408jaNwT7lsi8YZg/exec";
 const savedOpinions = JSON.parse(localStorage.getItem("opinionsMeuConcretoo")) || [];
+const email = document.getElementById("email").value || "";
 
 
 function renderOpinions() {
@@ -32,6 +33,7 @@ form.addEventListener("submit", async function (event) {
   const nome = document.getElementById("nome").value.trim();
   const tema = document.getElementById("tema").value.trim();
   const opiniao = document.getElementById("opiniao").value.trim();
+  const E-mail = document.getElementById("email").value.trim();
 
   if (!nome || !tema || !opiniao) {
     alert("Preencha todos os campos.");
