@@ -1,11 +1,10 @@
 const form = document.getElementById("opinionForm");
 const list = document.getElementById("opinionsList");
+const messageBox = document.getElementById("formMessage");
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw7V-1NF6LjL03Iys9hpyssOfBpVprt27tgU0r3475P4oU21aeMM_408jaNwT7lsi8YZg/exec";
+
 const savedOpinions = JSON.parse(localStorage.getItem("opinionsMeuConcretoo")) || [];
-
-const email = document.getElementById("email").value || "";
-
 
 function renderOpinions() {
   list.innerHTML = "";
@@ -20,6 +19,7 @@ function renderOpinions() {
     card.className = "opinion-card";
     card.innerHTML = `
       <strong>${item.nome}</strong>
+      <p><b>E-mail:</b> ${item.email || "Não informado"}</p>
       <p><b>Tema:</b> ${item.tema}</p>
       <p>${item.opiniao}</p>
       <small>${item.data}</small>
@@ -32,26 +32,23 @@ form.addEventListener("submit", async function (event) {
   event.preventDefault();
 
   const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
   const tema = document.getElementById("tema").value.trim();
   const opiniao = document.getElementById("opiniao").value.trim();
-  const E-mail = document.getElementById("email").value.trim();
 
   if (!nome || !tema || !opiniao) {
-    alert("Preencha todos os campos.");
+    messageBox.innerText = "Preencha todos os campos obrigatórios.";
+    messageBox.className = "form-message error";
     return;
   }
 
   const novaOpiniao = {
     nome,
+    email,
     tema,
     opiniao,
     data: new Date().toLocaleString("pt-BR")
   };
-
-  savedOpinions.push(novaOpiniao);
-  localStorage.setItem("opinionsMeuConcretoo", JSON.stringify(savedOpinions));
-  renderOpinions();
-  form.reset();
 
   try {
     await fetch(SCRIPT_URL, {
