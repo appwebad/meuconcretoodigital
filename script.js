@@ -1,6 +1,8 @@
 const form = document.getElementById("opinionForm");
 const list = document.getElementById("opinionsList");
 
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw7V-1NF6LjL03Iys9hpyssOfBpVprt27tgU0r3475P4oU21aeMM_408jaNwT7lsi8YZg/exec";
+
 const savedOpinions = JSON.parse(localStorage.getItem("opinionsMeuConcretoo")) || [];
 
 function renderOpinions() {
@@ -24,7 +26,7 @@ function renderOpinions() {
   });
 }
 
-form.addEventListener("submit", function (event) {
+form.addEventListener("submit", async function (event) {
   event.preventDefault();
 
   const nome = document.getElementById("nome").value.trim();
@@ -36,17 +38,33 @@ form.addEventListener("submit", function (event) {
     return;
   }
 
-  savedOpinions.push({
+  const novaOpiniao = {
     nome,
     tema,
     opiniao,
     data: new Date().toLocaleString("pt-BR")
-  });
+  };
 
+  savedOpinions.push(novaOpiniao);
   localStorage.setItem("opinionsMeuConcretoo", JSON.stringify(savedOpinions));
-  form.reset();
   renderOpinions();
-  alert("Opinião publicada com sucesso!");
+  form.reset();
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(novaOpiniao)
+    });
+
+    alert("Opinião publicada e enviada para a planilha!");
+
+  } catch (error) {
+    alert("Opinião publicada no site, mas não foi enviada para a planilha.");
+  }
 });
 
 renderOpinions();
