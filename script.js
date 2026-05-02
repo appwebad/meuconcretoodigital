@@ -3,7 +3,7 @@ const list = document.getElementById("opinionsList");
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw7V-1NF6LjL03Iys9hpyssOfBpVprt27tgU0r3475P4oU21aeMM_408jaNwT7lsi8YZg/exec";
 const savedOpinions = JSON.parse(localStorage.getItem("opinionsMeuConcretoo")) || [];
-const email = document.getElementById("email").value || "";
+
 
 function renderOpinions() {
   list.innerHTML = "";
